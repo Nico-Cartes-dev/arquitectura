@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emitir Comprobante de Comisión - Centro Médico Salud</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Emitir Comprobante de Comisión</h1>
+            <a href="admin-secretaria.html">Volver al Panel</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Generar Comprobante de Comisión</h2>
+            <form id="commissionForm">
+                <div class="form-group">
+                    <label for="doctor">Médico:</label>
+                    <select id="doctor" name="doctor" required>
+                        <option value="">Seleccione un médico</option>
+                        <option value="1">Dr. Juan Pérez</option>
+                        <option value="2">Dra. María González</option>
+                        <option value="3">Dr. Carlos Rodríguez</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="startDate">Fecha de inicio:</label>
+                    <input type="date" id="startDate" name="startDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="endDate">Fecha de fin:</label>
+                    <input type="date" id="endDate" name="endDate" required>
+                </div>
+                <button type="submit">Generar Comprobante</button>
+            </form>
+            <div id="commissionDetails" style="display: none;">
+                <h3>Detalles del Comprobante</h3>
+                <p><strong>Médico:</strong> <span id="doctorName"></span></p>
+                <p><strong>Período:</strong> <span id="period"></span></p>
+                <p><strong>Total de consultas:</strong> <span id="totalConsultations"></span></p>
+                <p><strong>Monto total de comisiones:</strong> $<span id="totalCommission"></span></p>
+                <button id="printButton">Imprimir Comprobante</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Centro Médico Salud. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/commission.js"></script>
+</body>
+</html>

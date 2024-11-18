@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anular Hora - Centro Médico Salud</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Anular Hora</h1>
+            <a href="admin-secretaria.html">Volver al Panel</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Anular Hora Médica</h2>
+            <form id="cancelForm">
+                <div class="form-group">
+                    <label for="appointmentId">ID de la Cita:</label>
+                    <input type="text" id="appointmentId" name="appointmentId" required>
+                </div>
+                <button type="submit">Buscar Cita</button>
+            </form>
+            <div id="appointmentDetails" style="display: none;">
+                <h3>Detalles de la Cita</h3>
+                <p><strong>Paciente:</strong> <span id="patientName"></span></p>
+                <p><strong>Médico:</strong> <span id="doctorName"></span></p>
+                <p><strong>Fecha:</strong> <span id="appointmentDate"></span></p>
+                <p><strong>Hora:</strong> <span id="appointmentTime"></span></p>
+                <button id="cancelButton">Anular Cita</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Centro Médico Salud. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/appointment.js"></script>
+</body>
+</html>

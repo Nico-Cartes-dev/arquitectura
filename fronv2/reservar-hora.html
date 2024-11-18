@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar Hora - Centro Médico Salud</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Reservar Hora</h1>
+            <a href="index.html">Volver al Inicio</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Reservar una Cita Médica</h2>
+            <form id="appointmentForm">
+                <div class="form-group">
+                    <label for="patient">Nombre del Paciente:</label>
+                    <input type="text" id="patient" name="patient" required>
+                </div>
+                <div class="form-group">
+                    <label for="doctor">Médico:</label>
+                    <select id="doctor" name="doctor" required>
+                        <option value="">Seleccione un médico</option>
+                        <option value="1">Dr. Juan Pérez</option>
+                        <option value="2">Dra. María González</option>
+                        <option value="3">Dr. Carlos Rodríguez</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Fecha:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Hora:</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+                <button type="submit">Reservar Cita</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Centro Médico Salud. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/appointment.js"></script>
+    <script>
+        document.getElementById('appointmentForm').addEventListener('submit', bookAppointment);
+    </script>
+</body>
+</html>

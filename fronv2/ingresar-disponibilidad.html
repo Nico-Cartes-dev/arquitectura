@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar Disponibilidad - Centro Médico Salud</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Ingresar Disponibilidad</h1>
+            <a href="admin-medico.html">Volver al Panel</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Ingresar Disponibilidad</h2>
+            <form id="availabilityForm">
+                <div class="form-group">
+                    <label for="date">Fecha:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="startTime">Hora de inicio:</label>
+                    <input type="time" id="startTime" name="startTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="endTime">Hora de fin:</label>
+                    <input type="time" id="endTime" name="endTime" required>
+                </div>
+                <button type="submit">Guardar Disponibilidad</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Centro Médico Salud. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('availabilityForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Disponibilidad guardada con éxito');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
