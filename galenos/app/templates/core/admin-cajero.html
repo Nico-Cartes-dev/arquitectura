@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Cajero - Centro Médico Salud</title>
+    <link rel="stylesheet" href="{% static 'core/css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Panel de Cajero</h1>
+            <a href="{% url 'cerrar_sesion' %}">Cerrar Sesión</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Funciones de Cajero</h2>
+            <ul>
+                <li><a href="{% url 'ingresar_pago_paciente' %}">Ingresar Pago de Paciente</a></li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Centro Médico Salud. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

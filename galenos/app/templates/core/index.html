@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro Médico Salud</title>
+    <!-- Asegúrate de que la ruta al archivo CSS esté correcta -->
+    <link rel="stylesheet" href="{% static 'core/css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <!-- Título y enlaces del menú -->
+            <h1>Centro Médico Salud</h1>
+            <!-- Asegúrate de que las vistas estén definidas correctamente en urls.py -->
+            <a href="{% url 'servicios' %}">Servicios</a>
+            <a href="{% url 'doctores_planta' %}">Doctores</a>
+            <a href="{% url 'contacto' %}">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Bienvenidos al Centro Médico Salud</h2>
+            <p>Ofrecemos servicios médicos de alta calidad con profesionales altamente calificados.</p>
+            <!-- Enlace para reservar una cita -->
+            <a href="{% url 'reservar_hora' %}" class="button">Reservar una cita</a>
+
+        </div>
+    </main>
+
+    <footer>
+        <!-- Pie de página -->
+        <p>&copy; 2024 Centro Médico Salud. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

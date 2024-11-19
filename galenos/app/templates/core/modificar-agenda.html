@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Agenda - Centro Médico Salud</title>
+    <link rel="stylesheet" href="{% static 'core/css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Modificar Agenda</h1>
+            <a href="{% url 'admin_secretaria' %}">Volver al Panel</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Modificar Agenda de Médicos</h2>
+            <form id="agendaForm" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="doctor">Médico:</label>
+                    <select id="doctor" name="doctor" required>
+                        <option value="">Seleccione un médico</option>
+                        <option value="1">Dr. Juan Pérez</option>
+                        <option value="2">Dra. María González</option>
+                        <option value="3">Dr. Carlos Rodríguez</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Fecha:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <button type="submit">Buscar Agenda</button>
+            </form>
+            <div id="agendaTable" style="display: none;">
+                <h3>Agenda del médico</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Hora</th>
+                            <th>Paciente</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="agendaTableBody">
+                        <!-- Las citas se cargarán aquí dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Centro Médico Salud. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="{% static 'core/js/agenda.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Pago de Comisiones - Centro Médico Salud</title>
+    <link rel="stylesheet" href="{% static 'core/css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Registrar Pago de Comisiones</h1>
+            <a href="{% url 'admin_secretaria' %}">Volver al Panel</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Registrar Pago de Comisiones</h2>
+            <form id="paymentForm" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="doctor">Médico:</label>
+                    <select id="doctor" name="doctor" required>
+                        <option value="">Seleccione un médico</option>
+                        <option value="1">Dr. Juan Pérez</option>
+                        <option value="2">Dra. María González</option>
+                        <option value="3">Dr. Carlos Rodríguez</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Monto a pagar:</label>
+                    <input type="number" id="amount" name="amount" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="paymentDate">Fecha de pago:</label>
+                    <input type="date" id="paymentDate" name="paymentDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="paymentMethod">Método de pago:</label>
+                    <select id="paymentMethod" name="paymentMethod" required>
+                        <option value="">Seleccione un método de pago</option>
+                        <option value="transfer">Transferencia bancaria</option>
+                        <option value="check">Cheque</option>
+                        <option value="cash">Efectivo</option>
+                    </select>
+                </div>
+                <button type="submit">Registrar Pago</button>
+            </form>
+            <div id="paymentConfirmation" style="display: none;">
+                <h3>Confirmación de Pago</h3>
+                <p><strong>Médico:</strong> <span id="confirmedDoctor"></span></p>
+                <p><strong>Monto pagado:</strong> $<span id="confirmedAmount"></span></p>
+                <p><strong>Fecha de pago:</strong> <span id="confirmedDate"></span></p>
+                <p><strong>Método de pago:</strong> <span id="confirmedMethod"></span></p>
+                <p><strong>Número de transacción:</strong> <span id="transactionNumber"></span></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Centro Médico Salud. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="{% static 'core/js/payments.js' %}"></script>
+</body>
+</html>

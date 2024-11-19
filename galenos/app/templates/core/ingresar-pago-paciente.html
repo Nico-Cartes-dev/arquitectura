@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar Pago del Paciente - Centro Médico Salud</title>
+    <link rel="stylesheet" href="static/core/css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Ingresar Pago del Paciente</h1>
+            <a href="admin-cajero.html">Volver al Panel</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Registrar Pago del Paciente</h2>
+            <form id="patientPaymentForm">
+                <div class="form-group">
+                    <label for="patient">Paciente:</label>
+                    <input type="text" id="patient" name="patient" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Servicio:</label>
+                    <select id="service" name="service" required>
+                        <option value="">Seleccione un servicio</option>
+                        <option value="consultation">Consulta médica</option>
+                        <option value="lab">Exámenes de laboratorio</option>
+                        <option value="xray">Radiografía</option>
+                        <option value="therapy">Terapia</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Monto a pagar:</label>
+                    <input type="number" id="amount" name="amount" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="paymentMethod">Método de pago:</label>
+                    <select id="paymentMethod" name="paymentMethod" required>
+                        <option value="">Seleccione un método de pago</option>
+                        <option value="cash">Efectivo</option>
+                        <option value="credit">Tarjeta de crédito</option>
+                        <option value="debit">Tarjeta de débito</option>
+                    </select>
+                </div>
+                <button type="submit">Registrar Pago</button>
+            </form>
+
+            <!-- Recibo de pago -->
+            <div id="paymentReceipt" style="display: none;">
+                <h3>Recibo de Pago</h3>
+                <p><strong>Paciente:</strong> <span id="receiptPatient"></span></p>
+                <p><strong>Servicio:</strong> <span id="receiptService"></span></p>
+                <p><strong>Monto pagado:</strong> $<span id="receiptAmount"></span></p>
+                <p><strong>Método de pago:</strong> <span id="receiptMethod"></span></p>
+                <p><strong>Fecha y hora:</strong> <span id="receiptDateTime"></span></p>
+                <p><strong>Número de recibo:</strong> <span id="receiptNumber"></span></p>
+                <button id="printReceipt">Imprimir Recibo</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Centro Médico Salud. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Simula el registro de pago y genera el recibo de pago
+        document.getElementById('patientPaymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Capturar datos del formulario
+            const patient = document.getElementById('patient').value;
+            const service = document.getElementById('service').value;
+            const amount = document.getElementById('amount').value;
+            const paymentMethod = document.getElementById('paymentMethod').value();
+
+            // Crear fecha y hora
+            const now = new Date();
+            const dateTime = now.toLocaleString();
+
+            // Generar número de recibo (para fines de simulación)
+            const receiptNumber = Math.floor(Math.random() * 1000000);
+
+            // Mostrar el recibo con los datos ingresados
+            document.getElementById('receiptPatient').textContent = patient;
+            document.getElementById('receiptService').textContent = service;
+            document.getElementById('receiptAmount').textContent = amount;
+            document.getElementById('receiptMethod').textContent = paymentMethod;
+            document.getElementById('receiptDateTime').textContent = dateTime;
+            document.getElementById('receiptNumber').textContent = receiptNumber;
+
+            // Mostrar el recibo
+            document.getElementById('paymentReceipt').style.display = 'block';
+
+            // Reiniciar el formulario
+            this.reset();
+        });
+
+        // Simular impresión del recibo
+        document.getElementById('printReceipt').addEventListener('click', function() {
+            window.print();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar Hora - Centro Médico Salud</title>
+    <link rel="stylesheet" href="{% static 'core/css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Reservar Hora</h1>
+            <a href="{% url 'index' %}">Inicio</a>
+            <a href="{% url 'doctores_planta' %}">Doctores</a>
+            <a href="{% url 'contacto' %}">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Reservar una Cita Médica</h2>
+
+            <!-- Mostrar mensajes de éxito o error -->
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li class="message {{ message.tags }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <!-- Formulario de Reserva -->
+            <form method="POST">
+                {% csrf_token %}
+
+                <!-- Nombre del Usuario -->
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+
+                <!-- RUT del Usuario -->
+                <div class="form-group">
+                    <label for="rut">RUT:</label>
+                    <input type="text" id="rut" name="rut" placeholder="ej. 12.345.678-9" required>
+                </div>
+
+                <!-- Correo Electrónico -->
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico:</label>
+                    <input type="email" id="correo" name="correo" placeholder="ej. ejemplo@correo.com" required>
+                </div>
+
+                <!-- Médico -->
+                <div class="form-group">
+                    <label for="doctor">Médico:</label>
+                    <select id="doctor" name="doctor" required>
+                        <option value="" disabled selected>Seleccione un médico</option>
+                        {% for doctor in doctores %}
+                            <option value="{{ doctor.id }}" data-especialidad="{{ doctor.especialidad }}">{{ doctor.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Fecha -->
+                <div class="form-group">
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                </div>
+
+                <!-- Hora -->
+                <div class="form-group">
+                    <label for="hora">Hora:</label>
+                    <select id="hora" name="hora" required>
+                        <option value="" disabled selected>Seleccione una hora</option>
+                        {% for hora_inicio, hora_fin in horas_disponibles %}
+                            <option value="{{ hora_inicio }}">{{ hora_inicio }} - {{ hora_fin }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button type="submit">Reservar Cita</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Centro Médico Salud. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="{% static 'core/js/appointment.js' %}"></script>
+</body>
+</html>

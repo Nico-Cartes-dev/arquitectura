@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Cita Médica</title>
+</head>
+<body>
+    <h1>Confirmación de Reserva de Cita Médica</h1>
+    <p>Estimado/a {{ paciente }},</p>
+    <p>Se ha confirmado su reserva con los siguientes detalles:</p>
+    <ul>
+        <li><strong>Médico:</strong> {{ doctor }} ({{ especialidad }})</li>
+        <li><strong>Fecha:</strong> {{ fecha }}</li>
+        <li><strong>Hora:</strong> {{ hora }}</li>
+    </ul>
+    <p>Si necesita cancelar o modificar su cita, por favor, contáctenos.</p>
+    <p>Gracias por confiar en nuestro centro médico.</p>
+</body>
+</html>
